@@ -13,6 +13,18 @@ interface Particle {
   originalY: number;
 }
 
+// Throttle function to limit how often a function is called
+const throttle = (callback: Function, delay: number) => {
+  let lastCall = 0;
+  return function(...args: any[]) {
+    const now = Date.now();
+    if (now - lastCall >= delay) {
+      lastCall = now;
+      callback(...args);
+    }
+  };
+};
+
 export default function InteractiveBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
@@ -105,10 +117,15 @@ export default function InteractiveBackground() {
       ctx.fill();
     };
 
-    const drawConnections = (particle: Particle, index: number) => {
+    const drawConnections = () => {
+      const particles = particlesRef.current;
       // Draw connections between particles if they're close enough
-      particlesRef.current.forEach((otherParticle, otherIndex) => {
-        if (index !== otherIndex) {
+      // for loops so only checking each pair of particles once
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const particle = particles[i];
+          const otherParticle = particles[j];
+          
           const dx = particle.x - otherParticle.x;
           const dy = particle.y - otherParticle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
@@ -122,39 +139,43 @@ export default function InteractiveBackground() {
             ctx.stroke();
           }
         }
-      });
+      }
     };
 
     const drawParticles = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      particlesRef.current.forEach((particle, index) => {
+      // Update and draw each particle
+      particlesRef.current.forEach((particle) => {
         updateParticlePosition(particle);
         applyMouseInteraction(particle);
         drawParticle(particle);
-        drawConnections(particle, index);
       });
+      
+      // Draw connections after all particles have been updated
+      drawConnections();
 
       // Schedule the next frame
       animationFrameRef.current = requestAnimationFrame(drawParticles);
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
+    // Throttle mouse move event to improve performance
+    const handleMouseMove = throttle((e: MouseEvent) => {
       mouseRef.current = {
         x: e.clientX,
         y: e.clientY,
       };
-    };
+    }, 16); // ~60fps (1000ms / 60 ≈ 16ms)
 
     window.addEventListener("resize", resizeCanvas);
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove as EventListener);
     
     resizeCanvas();
     drawParticles();
     
     return () => {
       window.removeEventListener("resize", resizeCanvas);
-      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mousemove", handleMouseMove as EventListener);
       cancelAnimationFrame(animationFrameRef.current);
     };
   }, []);
@@ -163,7 +184,7 @@ export default function InteractiveBackground() {
     <canvas 
       ref={canvasRef} 
       className="fixed top-0 left-0 w-full h-full -z-10 bg-gradient-to-b from-blue-950 via-indigo-950 to-black"
-      style={{ position: 'fixed', zIndex: -1 }}
+      style={{ position: 'fixed', zIndex: -1, pointerEvents: 'none' }}
     />
   );
 }

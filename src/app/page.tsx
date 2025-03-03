@@ -1,7 +1,6 @@
 "use client";
 
 import InteractiveBackground from "@/components/ui/InteractiveBackground";
-import {Button} from "@chakra-ui/react";
 
 export default function Home() {
   return (

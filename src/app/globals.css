@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @theme {
   --font-sans: var(--font-geist-sans);
@@ -8,13 +10,6 @@
 :root {
   --background: #030712;
   --foreground: #f8fafc;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #030712;
-    --foreground: #f8fafc;
-  }
 }
 
 body {

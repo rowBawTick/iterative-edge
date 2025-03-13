@@ -181,10 +181,19 @@ export default function InteractiveBackground() {
   }, []);
 
   return (
-    <canvas 
-      ref={canvasRef} 
-      className="fixed top-0 left-0 w-full h-full -z-10 bg-gradient-to-b from-blue-950 via-indigo-950 to-black"
-      style={{ position: 'fixed', zIndex: -1, pointerEvents: 'none' }}
-    />
+    <>
+      <div className="fixed inset-0 bg-gradient-to-b from-blue-950 via-indigo-950 to-black" style={{ zIndex: -10 }} />
+      <canvas 
+        ref={canvasRef} 
+        className="fixed inset-0 w-full h-full" 
+        style={{ 
+          position: 'fixed', 
+          zIndex: -1,
+          pointerEvents: 'none',
+          opacity: 1,
+          mixBlendMode: 'normal'
+        }}
+      />
+    </>
   );
 }

@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import InteractiveBackground from "@/components/ui/InteractiveBackground";
 import OurServices from "@/components/OurServices";
-import { PrimaryButton, SecondaryButton } from "@/components/ui/buttons/Button";
+import { PrimaryButton, SecondaryButton } from "@/components/ui/buttons";
 
 export default function Home() {
   const servicesRef = useRef<HTMLDivElement>(null);

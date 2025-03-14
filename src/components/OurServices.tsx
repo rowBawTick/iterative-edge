@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Section, Container } from '@/components/ui/DaisyUI';
-import { PrimaryButton } from '@/components/ui/buttons/Button';
+import { PrimaryButton } from '@/components/ui/buttons';
 import { FaLaptopCode, FaRobot, FaTools, FaLightbulb } from 'react-icons/fa';
 
 interface ServiceProps {

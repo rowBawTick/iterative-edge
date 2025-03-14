@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Section, Container } from '@/components/ui/DaisyUI';
+import { PrimaryButton } from '@/components/ui/buttons/Button';
 import { FaLaptopCode, FaRobot, FaTools, FaLightbulb } from 'react-icons/fa';
 
 interface ServiceProps {
@@ -67,10 +68,9 @@ const ServiceCard = ({ service, id }: { service: ServiceProps, id: string }) => 
               <h2 className="text-3xl md:text-4xl font-bold">{service.title}</h2>
             </div>
             <p className="text-lg text-gray-300 mb-8">{service.description}</p>
-            <button className="btn btn-primary btn-lg group relative overflow-hidden transition-all duration-300 hover:shadow-[0_0_15px_rgba(var(--primary-rgb),0.5)] active:scale-95">
-              <span className="relative z-10">Learn More</span>
-              <span className="absolute inset-0 bg-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></span>
-            </button>
+            <PrimaryButton>
+              Learn More
+            </PrimaryButton>
           </div>
           <div className="order-1 lg:order-2">
             <div className="relative h-[300px] md:h-[400px] w-full overflow-hidden rounded-xl shadow-2xl transform transition-transform duration-500 hover:scale-[1.02]">

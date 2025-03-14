@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import InteractiveBackground from "@/components/ui/InteractiveBackground";
 import OurServices from "@/components/OurServices";
+import { PrimaryButton, SecondaryButton } from "@/components/ui/buttons/Button";
 
 export default function Home() {
   const servicesRef = useRef<HTMLDivElement>(null);
@@ -28,18 +29,13 @@ export default function Home() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 mt-8">
-            <button 
-              onClick={scrollToServices}
-              className="btn btn-primary btn-lg relative overflow-hidden group transition-all duration-300 hover:shadow-[0_0_15px_rgba(var(--primary-rgb),0.5)] active:scale-95"
-            >
-              <span className="relative z-10">Our Services</span>
-              <span className="absolute inset-0 bg-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></span>
-            </button>
+            <PrimaryButton onClick={scrollToServices}>
+              Our Services
+            </PrimaryButton>
             
-            <button className="btn btn-outline btn-lg relative overflow-hidden group transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] active:scale-95">
-              <span className="relative z-10">Contact Us</span>
-              <span className="absolute inset-0 bg-primary/20 transform translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
-            </button>
+            <SecondaryButton>
+              Contact Us
+            </SecondaryButton>
           </div>
         </div>
       </div>

@@ -92,23 +92,56 @@ const ServiceCard = ({ service, id }: { service: ServiceProps, id: string }) => 
 };
 
 const ServiceNavigation = ({ activeIndex }: { activeIndex: number }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const viewportHeight = window.innerHeight;
+      const shouldBeVisible = window.scrollY > viewportHeight * 0.9;
+      
+      // Only update if the visibility state needs to change
+      if (shouldBeVisible !== isVisible) {
+        setIsVisible(shouldBeVisible);
+        // Delay hiding to allow fade out animation
+        if (!shouldBeVisible) {
+          setTimeout(() => setIsHidden(true), 300);
+        } else {
+          setIsHidden(false);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Check initial position
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isVisible]);
+
+  if (isHidden) return null;
+
   return (
-    <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50">
-      <div className="flex flex-col gap-4">
+    <nav 
+      aria-label="Services navigation"
+      className={`fixed right-8 top-1/2 transform -translate-y-1/2 z-50 transition-all duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+    >
+      <div className="flex flex-col gap-4" role="list">
         {services.map((service, index) => (
           <a
             key={service.id}
             href={`#service-${index}`}
-            className={`w-4 h-4 rounded-full transition-all duration-300 block ${
+            className={`w-4 h-4 rounded-full transition-all duration-300 block focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-base-300 ${
               activeIndex === index 
                 ? 'bg-primary scale-125' 
                 : 'bg-gray-500 hover:bg-gray-400'
             }`}
-            aria-label={`Go to ${service.title}`}
+            aria-label={`Navigate to ${service.title} section`}
+            aria-current={activeIndex === index ? 'true' : 'false'}
+            role="listitem"
           />
         ))}
       </div>
-    </div>
+    </nav>
   );
 };
 

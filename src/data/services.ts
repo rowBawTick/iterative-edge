@@ -17,7 +17,7 @@ export const services: ServiceProps[] = [
       'in creating responsive, user-friendly e-commerce platforms, enterprise solutions, and innovative digital ' +
       'products that drive growth and enhance user experience.',
     icon: React.createElement(FaLaptopCode, { className: 'w-12 h-12' }),
-    imageUrl: '/images/bespoke-app.jpg'
+    imageUrl: '/images/bespoke-app.webp'
   },
   {
     id: 'integrations',
@@ -26,7 +26,7 @@ export const services: ServiceProps[] = [
       'We help businesses leverage the power of data through intelligent automation, predictive analytics, and smart ' +
       'decision-making tools that transform operations and create competitive advantages.',
     icon: React.createElement(FaRobot, { className: 'w-12 h-12' }),
-    imageUrl: '/images/ai-integration.jpg'
+    imageUrl: '/images/ai-integration.webp'
   },
   {
     id: 'maintenance',
@@ -35,7 +35,7 @@ export const services: ServiceProps[] = [
       'and up-to-date. Our dedicated team provides regular updates, performance optimization, bug fixes, and 24/7 ' +
       'technical support to keep your digital assets running smoothly.',
     icon: React.createElement(FaTools, { className: 'w-12 h-12' }),
-    imageUrl: '/images/maintenance.jpg'
+    imageUrl: '/images/maintenance.webp'
   },
   {
     id: 'consultancy',
@@ -44,6 +44,6 @@ export const services: ServiceProps[] = [
       'work closely with your team to develop strategic roadmaps, optimize processes, and implement best practices ' +
       'that align technology investments with business objectives for maximum ROI.',
     icon: React.createElement(FaLightbulb, { className: 'w-12 h-12' }),
-    imageUrl: '/images/consultancy.jpg'
+    imageUrl: '/images/consultancy.webp'
   }
 ];

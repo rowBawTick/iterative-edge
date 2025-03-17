@@ -64,7 +64,7 @@ button, a {
   }
 
   .service-image-container {
-    @apply relative h-[300px] md:h-[400px] w-full overflow-hidden rounded-xl shadow-2xl transform 
+    @apply relative aspect-square w-full overflow-hidden rounded-xl shadow-2xl transform 
     transition-transform duration-500 hover:scale-[1.02];
   }
 
@@ -73,7 +73,7 @@ button, a {
   }
 
   .service-image {
-    @apply absolute inset-0 bg-cover bg-center transition-transform duration-1000 hover:scale-110;
+    @apply absolute inset-0 w-full h-full object-cover transition-transform duration-1000 hover:scale-110;
   }
 
   /* Navigation components */

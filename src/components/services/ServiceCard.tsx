@@ -13,8 +13,10 @@ export const ServiceCard = ({ service, id }: ServiceCardProps) => {
       <Container>
         <div className="service-grid">
           <div className="order-2 lg:order-1">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="p-4 rounded-full bg-base-200">{service.icon}</div>
+            <div className="flex items-center gap-4 mb-2">
+              <div className="p-4 rounded-full bg-base-200 flex items-center justify-center">
+                <div className="w-12 h-12 flex items-center justify-center">{service.icon}</div>
+              </div>
               <h2 className="text-3xl md:text-4xl font-bold">{service.title}</h2>
             </div>
             <p className="text-lg text-gray-300 mb-8">{service.description}</p>
@@ -23,13 +25,10 @@ export const ServiceCard = ({ service, id }: ServiceCardProps) => {
           <div className="order-1 lg:order-2">
             <div className="service-image-container">
               <div className="service-image-overlay" />
-              <div 
+              <img
+                src={service.imageUrl}
+                alt={`${service.title} service illustration`}
                 className="service-image"
-                style={{ 
-                  backgroundImage: `url(${service.imageUrl})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                }}
               />
             </div>
           </div>

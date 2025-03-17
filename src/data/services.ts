@@ -1,12 +1,11 @@
 import React from 'react';
 import { FaLaptopCode, FaRobot, FaTools, FaLightbulb } from 'react-icons/fa';
-import { IconType } from 'react-icons';
 
 export interface ServiceProps {
   id: string;
   title: string;
   description: string;
-  icon: React.ReactElement<IconType>;
+  icon: React.ReactElement;
   imageUrl: string;
 }
 

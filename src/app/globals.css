@@ -53,4 +53,44 @@ button, a {
   .text-shadow-sm {
     text-shadow: 0 0 20px rgba(0, 100, 255, 0.3);
   }
+
+  /* Service section components */
+  .service-section {
+    @apply min-h-screen flex items-center w-full scroll-mt-16;
+  }
+
+  .service-grid {
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-8 items-center;
+  }
+
+  .service-image-container {
+    @apply relative h-[300px] md:h-[400px] w-full overflow-hidden rounded-xl shadow-2xl transform 
+    transition-transform duration-500 hover:scale-[1.02];
+  }
+
+  .service-image-overlay {
+    @apply absolute inset-0 bg-base-200 opacity-50 z-10;
+  }
+
+  .service-image {
+    @apply absolute inset-0 bg-cover bg-center transition-transform duration-1000 hover:scale-110;
+  }
+
+  /* Navigation components */
+  .service-nav {
+    @apply fixed right-8 top-1/2 transform -translate-y-1/2 z-50 transition-all duration-300;
+  }
+
+  .service-nav-dot {
+    @apply w-4 h-4 rounded-full transition-all duration-300 block focus:outline-none focus:ring-2 
+    focus:ring-primary focus:ring-offset-2 focus:ring-offset-base-300;
+  }
+
+  .service-nav-dot-active {
+    @apply bg-primary scale-125;
+  }
+
+  .service-nav-dot-inactive {
+    @apply bg-gray-500 hover:bg-gray-400;
+  }
 }

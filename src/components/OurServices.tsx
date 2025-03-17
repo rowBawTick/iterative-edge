@@ -54,35 +54,28 @@ const services: ServiceProps[] = [
 
 const ServiceCard = ({ service, id }: { service: ServiceProps, id: string }) => {
   return (
-    <div 
-      id={id}
-      className="min-h-screen flex items-center py-16 w-full scroll-mt-16"
-    >
+    <div id={id} className="service-section py-16">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div className="service-grid">
           <div className="order-2 lg:order-1">
             <div className="flex items-center gap-4 mb-6">
-              <div className="bg-primary/10 p-4 rounded-full text-primary">
-                {service.icon}
-              </div>
+              <div className="p-4 rounded-full bg-base-200">{service.icon}</div>
               <h2 className="text-3xl md:text-4xl font-bold">{service.title}</h2>
             </div>
             <p className="text-lg text-gray-300 mb-8">{service.description}</p>
-            <PrimaryButton>
-              Learn More
-            </PrimaryButton>
+            <PrimaryButton>Learn More</PrimaryButton>
           </div>
           <div className="order-1 lg:order-2">
-            <div className="relative h-[300px] md:h-[400px] w-full overflow-hidden rounded-xl shadow-2xl transform transition-transform duration-500 hover:scale-[1.02]">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 mix-blend-overlay z-10"></div>
+            <div className="service-image-container">
+              <div className="service-image-overlay" />
               <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-10000 hover:scale-110"
+                className="service-image"
                 style={{ 
                   backgroundImage: `url(${service.imageUrl})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center'
                 }}
-              ></div>
+              />
             </div>
           </div>
         </div>
@@ -123,18 +116,15 @@ const ServiceNavigation = ({ activeIndex }: { activeIndex: number }) => {
   return (
     <nav 
       aria-label="Services navigation"
-      className={`fixed right-8 top-1/2 transform -translate-y-1/2 z-50 transition-all duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      className={`service-nav ${isVisible ? 'opacity-100' : 'opacity-0'}`}
     >
       <div className="flex flex-col gap-4" role="list">
         {services.map((service, index) => (
           <a
             key={service.id}
             href={`#service-${index}`}
-            className={`w-4 h-4 rounded-full transition-all duration-300 block focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-base-300 ${
-              activeIndex === index 
-                ? 'bg-primary scale-125' 
-                : 'bg-gray-500 hover:bg-gray-400'
-            }`}
+            className={
+              `service-nav-dot ${activeIndex === index ? 'service-nav-dot-active' : 'service-nav-dot-inactive'}`}
             aria-label={`Navigate to ${service.title} section`}
             aria-current={activeIndex === index ? 'true' : 'false'}
             role="listitem"

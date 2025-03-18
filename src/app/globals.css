@@ -93,4 +93,41 @@ button, a {
   .service-nav-dot-inactive {
     @apply bg-gray-500 hover:bg-gray-400;
   }
+
+  /* Button components */
+  .btn-base {
+    @apply btn btn-lg relative overflow-hidden transition-all duration-300 active:scale-95;
+  }
+
+  .btn-primary-custom {
+    @apply relative btn-base btn-primary;
+  }
+  .btn-primary-custom:hover {
+    @apply shadow-[0_0_15px_rgba(var(--primary-rgb),0.5)];
+  }
+
+  .btn-secondary-custom {
+    @apply relative btn-base btn-outline;
+  }
+  .btn-secondary-custom:hover {
+    @apply shadow-[0_0_15px_rgba(255,255,255,0.3)];
+  }
+
+  .btn-content {
+    @apply relative z-10;
+  }
+
+  .btn-hover-primary {
+    @apply absolute inset-0 bg-white opacity-20 transform translate-y-full transition-transform duration-300 ease-out;
+  }
+  .btn-primary-custom:hover .btn-hover-primary {
+    @apply translate-y-0;
+  }
+
+  .btn-hover-secondary {
+    @apply absolute inset-0 bg-primary opacity-20 transform translate-x-full transition-transform duration-300 ease-out;
+  }
+  .btn-secondary-custom:hover .btn-hover-secondary {
+    @apply translate-x-0;
+  }
 }

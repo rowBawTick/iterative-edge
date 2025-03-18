@@ -8,11 +8,11 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const PrimaryButton = ({ children, className = '', ...props }: ButtonProps) => {
   return (
     <button 
-      className={`btn btn-primary btn-lg relative overflow-hidden group transition-all duration-300 hover:shadow-[0_0_15px_rgba(var(--primary-rgb),0.5)] active:scale-95 ${className}`}
+      className={`btn-primary-custom ${className}`}
       {...props}
     >
-      <span className="relative z-10">{children}</span>
-      <span className="absolute inset-0 bg-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></span>
+      <span className="btn-content">{children}</span>
+      <span className="btn-hover-primary"></span>
     </button>
   );
 };

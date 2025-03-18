@@ -9,26 +9,29 @@ interface ServiceCardProps {
 
 export const ServiceCard = ({ service, id }: ServiceCardProps) => {
   return (
-    <div id={id} className="service-section py-16">
+    <div id={id} className="service-section py-24">
       <Container>
-        <div className="service-grid">
-          <div className="order-2 lg:order-1">
-            <div className="flex items-center gap-4 mb-2">
-              <div className="p-4 rounded-full bg-base-200 flex items-center justify-center">
-                <div className="w-12 h-12 flex items-center justify-center">{service.icon}</div>
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-8xl mx-auto">
+          <div className="order-2 lg:order-1 space-y-8">
+            <div className="flex items-center gap-6">
+              <div className="p-5 rounded-2xl bg-base-200 flex items-center justify-center shrink-0">
+                <div className="w-14 h-14 flex items-center justify-center">{service.icon}</div>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold">{service.title}</h2>
+              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">{service.title}</h2>
             </div>
-            <p className="text-lg text-gray-300 mb-8">{service.description}</p>
-            <PrimaryButton>Learn More</PrimaryButton>
+            <p className="text-xl lg:text-2xl text-gray-300 leading-relaxed">{service.description}</p>
+            <div className="pt-4">
+              <PrimaryButton size="lg">Learn More</PrimaryButton>
+            </div>
           </div>
           <div className="order-1 lg:order-2">
-            <div className="service-image-container">
-              <div className="service-image-overlay" />
+            <div className="relative aspect-square rounded-3xl overflow-hidden bg-base-200">
               <img
                 src={service.imageUrl}
                 alt={`${service.title} service illustration`}
-                className="service-image"
+                className="w-full h-full object-cover"
+                width={1024}
+                height={1024}
               />
             </div>
           </div>

@@ -21,7 +21,7 @@ export const ServiceCard = ({ service, id, index }: ServiceCardProps) => {
               <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">{service.title}</h2>
             </div>
             <p className="text-xl lg:text-2xl text-gray-300 leading-relaxed">{service.description}</p>
-            <div className="pt-4">
+            <div className="pt-4 flex sm:block justify-center">
               <PrimaryButton size="lg">Learn More</PrimaryButton>
             </div>
           </div>

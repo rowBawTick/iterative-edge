@@ -35,7 +35,7 @@ export const ServiceNavigation = ({ activeIndex }: ServiceNavigationProps) => {
   return (
     <nav 
       aria-label="Services navigation"
-      className={`service-nav ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      className={`service-nav hidden sm:block ${isVisible ? 'opacity-100' : 'opacity-0'}`}
     >
       <div className="flex flex-col gap-4" role="list">
         {services.map((service, index) => (

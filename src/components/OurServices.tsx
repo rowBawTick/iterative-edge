@@ -45,13 +45,14 @@ export default function OurServices() {
   return (
     <Section className="relative bg-base-300" id="our-services">
       <div ref={sectionRef} className="relative">
-        <h2 className="text-4xl md:text-5xl font-bold text-center pt-16 pb-8">Our Services</h2>
+        <h2 className="text-6xl md:text-6xl font-bold text-center pt-16 pb-8">Our Services</h2>
         
         {services.map((service, index) => (
           <ServiceCard 
             key={service.id} 
             service={service} 
             id={`service-${index}`}
+            index={index}
           />
         ))}
         

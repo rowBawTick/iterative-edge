@@ -4,12 +4,18 @@ import { useRef } from "react";
 import InteractiveBackground from "@/components/ui/InteractiveBackground";
 import OurServices from "@/components/OurServices";
 import { PrimaryButton, SecondaryButton } from "@/components/ui/buttons";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   const servicesRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
 
   const scrollToServices = () => {
     servicesRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToContact = () => {
+    contactRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -33,7 +39,7 @@ export default function Home() {
               Our Services
             </PrimaryButton>
             
-            <SecondaryButton>
+            <SecondaryButton onClick={scrollToContact}>
               Contact Us
             </SecondaryButton>
           </div>
@@ -42,7 +48,12 @@ export default function Home() {
 
       {/* Services Section */}
       <div ref={servicesRef}>
-        <OurServices />
+        <OurServices onLearnMore={scrollToContact} />
+      </div>
+
+      {/* Contact Form Section */}
+      <div ref={contactRef}>
+        <ContactForm id="contact" />
       </div>
     </main>
   );

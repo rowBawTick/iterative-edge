@@ -6,7 +6,11 @@ import { ServiceCard } from '@/components/services/ServiceCard';
 import { ServiceNavigation } from '@/components/services/ServiceNavigation';
 import { services } from '@/data/services';
 
-export default function OurServices() {
+interface OurServicesProps {
+  onLearnMore?: () => void;
+}
+
+export default function OurServices({ onLearnMore }: OurServicesProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -53,6 +57,7 @@ export default function OurServices() {
             service={service} 
             id={`service-${index}`}
             index={index}
+            onLearnMore={onLearnMore}
           />
         ))}
         

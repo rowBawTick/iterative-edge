@@ -6,9 +6,10 @@ interface ServiceCardProps {
   service: ServiceProps;
   id: string;
   index: number;
+  onLearnMore?: () => void;
 }
 
-export const ServiceCard = ({ service, id, index }: ServiceCardProps) => {
+export const ServiceCard = ({ service, id, index, onLearnMore }: ServiceCardProps) => {
   return (
     <div id={id} className="service-section py-24">
       <Container>
@@ -22,7 +23,7 @@ export const ServiceCard = ({ service, id, index }: ServiceCardProps) => {
             </div>
             <p className="text-xl lg:text-2xl text-gray-300 leading-relaxed">{service.description}</p>
             <div className="pt-4 flex sm:block justify-center">
-              <PrimaryButton size="lg">Learn More</PrimaryButton>
+              <PrimaryButton size="lg" onClick={onLearnMore}>Learn More</PrimaryButton>
             </div>
           </div>
           <div className={`order-1 ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>

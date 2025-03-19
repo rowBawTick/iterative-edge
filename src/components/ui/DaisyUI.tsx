@@ -29,12 +29,11 @@ export function Section({ children, className = '', id }: SectionProps) {
   );
 }
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   variant?: 'primary' | 'secondary' | 'accent' | 'ghost' | 'link' | 'outline';
   size?: 'xs' | 'sm' | 'md' | 'lg';
   className?: string;
-  onClick?: () => void;
 }
 
 export function Button({
@@ -42,15 +41,16 @@ export function Button({
   variant = 'primary',
   size,
   className = '',
-  onClick
+  ...props
 }: ButtonProps) {
   const variantClass = variant ? `btn-${variant}` : '';
   const sizeClass = size ? `btn-${size}` : '';
 
   return (
     <button
+      type="submit"
       className={`btn ${variantClass} ${sizeClass} ${className}`}
-      onClick={onClick}
+      {...props}
     >
       {children}
     </button>

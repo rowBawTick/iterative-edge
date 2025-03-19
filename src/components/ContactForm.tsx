@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Button } from './ui/DaisyUI';
 import { FiCheckCircle } from 'react-icons/fi';
 import { BiErrorCircle } from 'react-icons/bi';
-import type { ContactFormData } from '@/services/email/types';
 
 interface ContactFormProps {
   id: string;
@@ -14,7 +13,7 @@ interface AlertState {
 }
 
 export default function ContactForm({ id }: ContactFormProps) {
-  const [formData, setFormData] = useState<ContactFormData>({
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     enquiry: ''

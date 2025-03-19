@@ -1,4 +1,22 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Iterative Edge Website
+
+A modern, responsive website built with Next.js, TypeScript, TailwindCSS, and DaisyUI.
+
+## Environment Variables Setup
+
+Create a `.env.local` file in the root directory with the following variables:
+
+```bash
+# SendGrid Configuration
+SENDGRID_API_KEY=your_sendgrid_api_key_here
+NOTIFICATION_EMAIL=your.email@example.com
+FROM_EMAIL=your.verified.sender@example.com
+```
+
+Notes:
+- `SENDGRID_API_KEY`: Your SendGrid API key
+- `NOTIFICATION_EMAIL`: The email address where you want to receive contact form submissions
+- `FROM_EMAIL`: Must be a verified sender email in your SendGrid account
 
 ## Getting Started
 
